@@ -71,7 +71,7 @@ const loginSubmit = async()=>{
       }else{
         setisLoading(true)
         try {
-          const loginResponse = await axios.post(`${import.meta.env.VITE_BACKEND_URL}auth/login`,loginFormValues,{withCredentials:true});
+          const loginResponse = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/login`,loginFormValues,{withCredentials:true});
           if(loginResponse.status===201){
             setisLoading(false)
             setLoginData(loginResponse.data.data)
