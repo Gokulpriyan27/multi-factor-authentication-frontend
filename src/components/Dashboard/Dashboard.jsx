@@ -29,7 +29,7 @@ function Dashboard() {
   const getUserDetails = async () => {
     try {
       const connResponse = await axios.get(
-        `${import.meta.env.VITE_BACKEND_URL}auth/success`,
+        `${import.meta.env.VITE_BACKEND_URL}/auth/success`,
         { withCredentials: true }
       );
       if (connResponse.status === 201) {
