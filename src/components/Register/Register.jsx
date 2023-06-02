@@ -61,7 +61,7 @@ const handleRegister = async(event)=>{
                         
                         try {
                             setisLoading(true);
-                            const regResponse = await axios.post(`http://localhost:4000/auth/register`,formValues,{withCredentials:true});
+                            const regResponse = await axios.post(`${import.meta.env.VITE_BACKEND_URL}auth/register`,formValues,{withCredentials:true});
                             if(regResponse.status===201){
                                 setisLoading(false);
                                 setFormValues(initialRegisterValues);
@@ -100,7 +100,7 @@ const handleRegister = async(event)=>{
 const googleClick = async()=>{
 
   try {
-    window.open(`http://localhost:4000/auth/google`,"_self");
+    window.open(`${import.meta.env.VITE_BACKEND_URL}auth/google`,"_self");
   } catch (error) {
     toastfunction(error.response.data.message)
   }
@@ -112,7 +112,7 @@ const googleClick = async()=>{
 const githubClick = async()=>{
 
   try {
-    window.open(`http://localhost:4000/auth/github`,"_self")
+    window.open(`${import.meta.env.VITE_BACKEND_URL}auth/github`,"_self")
   } catch (error) {
     toastfunction(error.response.data.message)
   }
@@ -121,7 +121,7 @@ const githubClick = async()=>{
 const facebookClick = async()=>{
 
   try {
-    window.open(`http://localhost:4000/auth/facebook`,"_self")
+    window.open(`${import.meta.env.VITE_BACKEND_URL}auth/facebook`,"_self")
   } catch (error) {
     toastfunction(error.response.data.message)
   }

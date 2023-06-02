@@ -1,5 +1,5 @@
 import {BrowserRouter,Routes,Route} from "react-router-dom"
-import Login from "./components/Login/login"
+import Login from "./components/Login/Login"
 import Register from "./components/Register/Register"
 import Dashboard from "./components/Dashboard/Dashboard"
 import { MyContext } from "./Context/MyContext"

@@ -71,7 +71,7 @@ const loginSubmit = async()=>{
       }else{
         setisLoading(true)
         try {
-          const loginResponse = await axios.post(`http://localhost:4000/auth/login`,loginFormValues,{withCredentials:true});
+          const loginResponse = await axios.post(`${import.meta.env.VITE_BACKEND_URL}auth/login`,loginFormValues,{withCredentials:true});
           if(loginResponse.status===201){
             setisLoading(false)
             setLoginData(loginResponse.data.data)
@@ -92,7 +92,7 @@ const loginSubmit = async()=>{
 
 const googleLogin = ()=>{
   try {
-    window.open(`http://localhost:4000/auth/google`,"_self")
+    window.open(`${import.meta.env.VITE_BACKEND_URL}auth/google`,"_self")
   } catch (error) {
     toastfunction(error.response.data.message)
   }
@@ -100,7 +100,7 @@ const googleLogin = ()=>{
 
 const githubLogin = ()=>{
   try {
-    window.open(`http://localhost:4000/auth/github`,"_self")
+    window.open(`${import.meta.env.VITE_BACKEND_URL}auth/github`,"_self")
   } catch (error) {
     toastfunction(error.response.data.message)
   }
@@ -108,7 +108,7 @@ const githubLogin = ()=>{
 
 const facebookLogin = ()=>{
   try {
-    window.open(`http://localhost:4000/auth/facebook`,"_self")
+    window.open(`${import.meta.env.VITE_BACKEND_URL}auth/facebook`,"_self")
   } catch (error) {
     toastfunction(error.response.data.message)
   }
