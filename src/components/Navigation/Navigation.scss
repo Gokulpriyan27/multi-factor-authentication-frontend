@@ -1,0 +1,49 @@
+
+
+.navbar-wrapper{
+    font-family: "Poppins", sans-serif;
+    height: 8vh;
+    display: flex !important;
+    justify-content: center !important;
+
+    .nav-wrapper{
+        width: 60%;
+        margin:0 auto;
+        display: flex;
+        justify-content:right;
+        align-items: center;
+
+        Button{
+            width: auto;
+        }
+      
+    }
+}
+
+
+
+@media only screen and (max-width: 280px){
+
+    .navbar-wrapper{
+        
+        .nav-wrapper{
+            display: flex;
+            justify-content:center;
+        }
+    }
+  
+  }
+
+
+@media only screen and (max-width: 576px) {
+    
+    .navbar-wrapper{
+        
+        .nav-wrapper{
+            display: flex;
+            justify-content:center;
+        }
+    }
+  }
+
+
