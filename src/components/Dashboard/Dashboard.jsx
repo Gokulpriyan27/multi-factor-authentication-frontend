@@ -35,6 +35,7 @@ function Dashboard() {
       if (connResponse.status === 201) {
         const { createdAt, updatedAt, _id, __v, ...otherDetails } =
           connResponse.data.data;
+          console.log(otherDetails,"login details")
         setLoginData({ ...otherDetails });
       }
     } catch (error) {
