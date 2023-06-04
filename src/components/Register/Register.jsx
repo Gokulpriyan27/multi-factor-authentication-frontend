@@ -61,7 +61,7 @@ const handleRegister = async(event)=>{
                         
                         try {
                             setisLoading(true);
-                            const regResponse = await axios.post(`${import.meta.env.VITE_BACKEND_URL}auth/register`,formValues,{withCredentials:true});
+                            const regResponse = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/register`,formValues,{withCredentials:true});
                             if(regResponse.status===201){
                                 setisLoading(false);
                                 setFormValues(initialRegisterValues);
