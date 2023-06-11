@@ -90,9 +90,16 @@ const loginSubmit = async()=>{
  
 }
 
-const googleLogin = ()=>{
+const googleLogin = async()=>{
   try {
-    window.open(`${import.meta.env.VITE_BACKEND_URL}/auth/google`,"_self")
+    // window.open(`${import.meta.env.VITE_BACKEND_URL}/auth/google`,"_self")'
+
+    const googleLogin = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/auth/google`);
+
+    console.log(googleLogin);
+    if(googleLogin.status===200){
+      console.log(googleLogin.data)
+    }
   } catch (error) {
     toastfunction(error.response.data.message)
   }
