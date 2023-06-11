@@ -92,12 +92,12 @@ const loginSubmit = async()=>{
 
 const googleLogin = async()=>{
   try {
-    // window.open(`${import.meta.env.VITE_BACKEND_URL}/auth/google`,"_self")'
+    const googleLogin = window.open(`${import.meta.env.VITE_BACKEND_URL}/auth/google`,"_self")
 
-    const googleLogin = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/auth/google`);
+    // const googleLogin = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/auth/google`);
 
     console.log(googleLogin);
-    if(googleLogin.status===200){
+    if(googleLogin.statusCode===200){
       console.log(googleLogin.data)
     }
   } catch (error) {
