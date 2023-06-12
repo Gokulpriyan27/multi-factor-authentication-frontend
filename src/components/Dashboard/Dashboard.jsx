@@ -7,17 +7,21 @@ import {
   CardText,
   Container,
 } from "reactstrap";
-import axios from "axios";
 import "./Dashboard.scss";
 import myImage from "../Dashboard/alt.jpg";
 import Confetti from "react-confetti";
 import Navigation from "../Navigation/Navigation";
 import Footer from "../Footer/Footer";
 import { MyContext } from "../../Context/MyContext";
+import { useSearchParams } from "react-router-dom";
 
 
 function Dashboard() {
-  const {loginData,setLoginData}=useContext(MyContext);
+
+  const [searchParams]=useSearchParams();
+  const id = searchParams.get("id");
+  const displayName = searchParams.get("displayName");
+  const image = searchParams.get("image");
   const [celebrate, setCelebrate] = useState(false);
   const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,
@@ -26,35 +30,12 @@ function Dashboard() {
 
 
 
-  const getUserDetails = async () => {
-    try {
-      const connResponse = await axios.get(
-        `${import.meta.env.VITE_BACKEND_URL}/auth/success`,
-        { withCredentials: true }
-      );
-      if (connResponse.status === 201) {
-        const { createdAt, updatedAt, _id, __v, ...otherDetails } =
-          connResponse.data.data;
-          console.log(otherDetails,"login details")
-        setLoginData({ ...otherDetails });
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-
   useEffect(() => {
     setCelebrate(true);
 
     setTimeout(() => {
       setCelebrate(false);
     }, 5000);
- 
-    if(!Object.keys(loginData).length>0){
-      getUserDetails();
-    }
-    
 
   }, []);
 
@@ -99,11 +80,11 @@ function Dashboard() {
               width: "auto",
             }}
           >
-            <CardHeader tag="h3">Welcome {loginData.username}!</CardHeader>
+            <CardHeader tag="h3">Welcome {displayName}!</CardHeader>
 
             <CardBody>
               <CardImg
-                src={loginData.image ? loginData.image : myImage}
+                src={image}
                 alt={myImage}
                 className="card-image"
               />
@@ -112,20 +93,12 @@ function Dashboard() {
               </CardText>
               <hr className="space" />
 
-              {loginData
-                ? Object.entries(loginData).map(([key, value]) => {
-                    if (key === "image") {
-                      return null;
-                    }
-
-                    return (
-                      <CardText key={key}>
-                        <span>{key} - </span>
-                        <span>{value}</span>
-                      </CardText>
-                    );
-                  })
-                : null}
+             {
+              id ? (<p>Id: {id}</p>):(<p>No id</p>)
+             }
+             {
+              displayName ? (<p>Username: {displayName}</p>):(<p>No display name</p>)
+             }
             </CardBody>
           </Card>
         </Container>
